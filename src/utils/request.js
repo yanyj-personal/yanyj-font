@@ -1,5 +1,6 @@
 import fetch from 'dva/fetch';
 import { notification } from 'antd';
+import config from '../config';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -14,6 +15,7 @@ function checkStatus(response) {
   throw error;
 }
 
+// let firstFetch = true;
 /**
  * Requests a URL, returning a promise.
  *
@@ -23,20 +25,27 @@ function checkStatus(response) {
  */
 export default async function request(url, options) {
   const defaultOptions = {
-    // credentials: 'include',
+    credentials: 'credentials',
+    mode: 'cors',
   };
   const newOptions = { ...defaultOptions, ...options };
-  // if (newOptions.method === 'POST' || newOptions.method === 'PUT') {
+  if (newOptions.method === 'POST' || newOptions.method === 'PUT' || newOptions.method === 'PATCH') {
     newOptions.headers = {
       Accept: 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
       ...newOptions.headers,
     };
-    newOptions.body = newOptions.body;
-  // }
+    newOptions.body = JSON.stringify(newOptions.body);
+  }
   let responseJson = {};
-  await fetch(url, newOptions)
-    // .then(checkStatus)
-    .then(response => response.json()).then((res) => { responseJson = res; });
+  // if (firstFetch) {
+  //   await fetch(url, { ...newOptions, ...{ method: 'OPTIONS' } }).then(() => { });
+  //   firstFetch = false;
+  // }
+  await fetch(`${config.url}${url}`, newOptions)
+  // .then(checkStatus)
+    .then(response => response.json()).then((res) => {
+      responseJson = res;
+    });
   return responseJson;
 }

@@ -92,3 +92,12 @@ export function digitUppercase(n) {
 
   return s.replace(/(零.)*零元/, '元').replace(/(零.)+/g, '零').replace(/^整$/, '零元整');
 }
+
+
+export function getUrlParamsByCondition(condition) {
+  let params = '?';
+  for(let key in condition) {
+    params += `${key}=${condition[key]}&`;
+  }
+  return params.substring(0, params.length - 1);
+}

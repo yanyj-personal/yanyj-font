@@ -1,6 +1,11 @@
 @import "~antd/lib/style/themes/default.less";
 @import "../../utils/utils.less";
 
+.formItem {
+  text-align: left;
+  margin-top: 10px;
+}
+
 .standardList {
   :global {
     .ant-card-head {
@@ -25,6 +30,7 @@
       margin-top: 24px;
     }
   }
+
   .headerInfo {
     position: relative;
     text-align: center;
@@ -51,11 +57,14 @@
   }
   .listContent {
     font-size: 0;
+    display: flex;
+    width: 100%;
     & > div {
       color: @text-color-secondary;
       display: inline-block;
       font-size: @font-size-base;
       margin-left: 40px;
+      flex-grow: 1;
       & > span {
         line-height: 20px;
       }
@@ -67,7 +76,7 @@
     }
     & > div:last-child {
       position: relative;
-      top: 0px;
+      top: 0;
       width: 188px;
     }
   }

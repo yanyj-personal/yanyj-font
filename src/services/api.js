@@ -88,9 +88,8 @@ export async function queryTicketProfitList() {
 }
 
 export async function submitWithDrawForm(id, params) {
-  console.log(params);
   return request('http://localhost:3000/ticket/profit/' + id, {
-    method: 'patch',
+    method: 'PATCH',
     body: params,
   });
 }
