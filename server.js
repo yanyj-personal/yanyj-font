@@ -8,7 +8,7 @@ app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-app.listen(8000, function () {
+app.listen(80, function () {
 
   console.log('Example app listening at http://%s:%s');
 });
