@@ -26,6 +26,43 @@ export const getNavData = app => [
             component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
           },
           {
+            name: 'Ticket Analysis',
+            path: 'ticket-analysis',
+            component: dynamicWrapper(app, ['ticketAnalysis'], () => import('../routes/Dashboard/TicketAnalysis')),
+          },
+          {
+            name: '测试页',
+            path: 'test',
+            component: dynamicWrapper(app, [], () => import('../routes/Test/Test')),
+          },
+          {
+            name: '监控页',
+            path: 'monitor',
+            component: dynamicWrapper(app, ['monitor'], () => import('../routes/Dashboard/Monitor')),
+          },
+          {
+            name: '工作台',
+            path: 'workplace',
+            component: dynamicWrapper(app, ['project', 'activities', 'chart'], () => import('../routes/Dashboard/Workplace')),
+          },
+        ],
+      },
+      {
+        name: '工具',
+        icon: 'appstore',
+        path: 'utils',
+        children: [
+          {
+            name: 'restfulAPI 模拟数据',
+            path: 'mock-api',
+            component: dynamicWrapper(app, ['chart'], () => import('../routes/Dashboard/Analysis')),
+          },
+          {
+            name: 'Ticket Analysis',
+            path: 'ticket-analysis',
+            component: dynamicWrapper(app, ['ticketAnalysis'], () => import('../routes/Dashboard/TicketAnalysis')),
+          },
+          {
             name: '测试页',
             path: 'test',
             component: dynamicWrapper(app, [], () => import('../routes/Test/Test')),
@@ -81,7 +118,7 @@ export const getNavData = app => [
         children: [
           {
             name: 'Ticket Profit',
-            path: 'basic-list',
+            path: 'ticket-profit',
             component: dynamicWrapper(app, ['TicketProfitListState'], () => import('../routes/List/TicketProfitList')),
           },
           {

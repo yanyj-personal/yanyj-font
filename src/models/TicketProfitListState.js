@@ -17,6 +17,7 @@ export default {
       showQuickJumper: true,
       pageSize: 5,
       total: 100,
+      currentPage: 1,
     },
     totalMonth: 0,
     amount: 0,

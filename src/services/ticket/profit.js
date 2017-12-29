@@ -31,7 +31,7 @@ export async function submitNewProfit(params) {
 }
 
 export async function getMonthAnalysis() {
-  return request('/ticket/analysis/profit/month');
+  return request('/ticket/analysis/profits/month');
 }
 
 export async function deletTcicketProfit(id) {
@@ -39,3 +39,13 @@ export async function deletTcicketProfit(id) {
     method: 'DELETE',
   });
 }
+
+
+export async function getAnalysis() {
+  return request('/ticket/analysis/profits');
+}
+
+export async function getIncomeStat() {
+  return request('/ticket/analysis/profits/amount');
+}
+
