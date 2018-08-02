@@ -25,26 +25,30 @@ function checkStatus(response) {
  */
 export default async function request(url, options) {
   const defaultOptions = {
-    credentials: 'credentials',
-    mode: 'cors',
+    // credentials: 'credentials',
   };
   const newOptions = { ...defaultOptions, ...options };
-  if (newOptions.method === 'POST' || newOptions.method === 'PUT' || newOptions.method === 'PATCH') {
+  if (newOptions.method === 'POST' || newOptions.method === 'PUT' || newOptions.method === 'PATCH' ) {
     newOptions.headers = {
-      Accept: 'application/json',
+      // Accept: 'application/json',
       'Content-Type': 'application/json; charset=utf-8',
       ...newOptions.headers,
     };
     newOptions.body = JSON.stringify(newOptions.body);
+
   }
+
   let responseJson = {};
   // if (firstFetch) {
   //   await fetch(url, { ...newOptions, ...{ method: 'OPTIONS' } }).then(() => { });
   //   firstFetch = false;
   // }
+
+  console.log(newOptions);
   await fetch(`${config.url}${url}`, newOptions)
   // .then(checkStatus)
     .then(response => response.json()).then((res) => {
+      console.log(1);
       responseJson = res;
     });
   return responseJson;
